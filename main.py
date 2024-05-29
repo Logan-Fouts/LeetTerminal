@@ -10,10 +10,10 @@ def display_problems(home_links):
     longest_title = max(len(link["title"]) for link in home_links)
 
     table = Table(show_header=True, header_style="bold magenta")
-    table.add_column("Index", style="dim", width=6)
-    table.add_column("Title", style="bold", width=longest_title + 2)
-    table.add_column("Index", style="dim", width=6)
-    table.add_column("Title", style="bold", width=longest_title + 2)
+    table.add_column("Index", style="dim", width=15)
+    table.add_column("Title", style="bold", width=longest_title)
+    table.add_column("Index", style="dim", width=15)
+    table.add_column("Title", style="bold", width=longest_title)
 
     # Fill the table with problem titles in two columns
     for i in range(0, len(home_links), 2):
@@ -32,13 +32,13 @@ def display_problems(home_links):
 
 
 def main():
+    main_url = str(input("Enter url of the problem list you want: "))
+    print(main_url)
     run = True
 
     while run:
         # Show all available problems
-        home_links = scraper.get_problems(
-            url="https://leetcode.com/studyplan/leetcode-75/"
-        )
+        home_links = scraper.get_problems(main_url)
         console.print("[bold cyan]Problems[/bold cyan]")
         display_problems(home_links)
 
