@@ -1,6 +1,6 @@
 import json
 from bs4 import BeautifulSoup
-import tools
+from .tools import *
 import os
 
 from selenium import webdriver
@@ -17,7 +17,7 @@ def get_links(url):
     """
     Returns a list of problems with name and links.
     """
-    response = tools.scrape_page(url)
+    response = scrape_page(url)
 
     soup = BeautifulSoup(response, "html.parser")
 
@@ -33,7 +33,7 @@ def get_problems(url):
     """
     Returns all questions on a given page.
     """
-    response = tools.scrape_page(url)
+    response = scrape_page(url)
 
     soup = BeautifulSoup(response, "html.parser")
     script_tag = soup.find("script", {"id": "__NEXT_DATA__"})

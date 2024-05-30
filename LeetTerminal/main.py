@@ -1,6 +1,6 @@
 from rich.console import Console
 from rich.table import Table
-import scraper
+from .scraper import *
 
 console = Console()
 
@@ -38,7 +38,7 @@ def main():
 
     while run:
         # Show all available problems
-        home_links = scraper.get_problems(main_url)
+        home_links = get_problems(main_url)
         console.print("[bold cyan]Problems[/bold cyan]")
         display_problems(home_links)
 
@@ -56,7 +56,7 @@ def main():
 
         # Pull problem description
         console.print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", style="bold green")
-        description = scraper.scrape_description(selected_link)
+        description = scrape_description(selected_link)
         console.print(description, style="bold yellow")
 
         console.print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", style="bold green")
